@@ -1,0 +1,67 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class CavaleiroIdleState : BaseState
+{
+    CavaleiroStateMachine enemyStateMachine;
+
+    Vector3 holderPosition;
+
+    public CavaleiroIdleState(CavaleiroStateMachine stateMachine) : base("Idle", stateMachine) {
+        enemyStateMachine = stateMachine;
+    }
+
+    public override void Enter() {
+
+    }
+
+    public override void UpdateLogic() {
+        if (enemyStateMachine.actionState == TroopActionState.Attack)
+        {
+            if (enemyStateMachine.enemyInRange)
+            {
+                if (enemyStateMachine.canAttack)
+                {
+                    stateMachine.ChangeState(enemyStateMachine.attackState);
+                }
+            }
+            else
+            {
+                stateMachine.ChangeState(enemyStateMachine.walkState);
+            }
+        }
+        else if (enemyStateMachine.actionState == TroopActionState.Defend)
+        {
+            if (enemyStateMachine.enemyInRange)
+            {
+                if (enemyStateMachine.canAttack)
+                {
+                    stateMachine.ChangeState(enemyStateMachine.attackState);
+                }
+            }
+            else if (!enemyStateMachine.inDefendPosition)
+            {
+                stateMachine.ChangeState(enemyStateMachine.walkState);
+            }
+        }
+        else if (enemyStateMachine.actionState == TroopActionState.Retreat)
+        {
+            if (!enemyStateMachine.inRetreatPosition)
+            {
+                stateMachine.ChangeState(enemyStateMachine.walkState);
+            }
+        }
+    }
+
+    public override void UpdatePhysics()
+    {
+        enemyStateMachine.rigidBody.velocity = Vector2.zero;
+    }
+
+    public override void Exit() 
+    {
+        
+    }
+}

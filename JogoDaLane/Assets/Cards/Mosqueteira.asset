@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fa198f2741b5d40ae61ffbb5e41f8c, type: 3}
+  m_Name: Mosqueteira
+  m_EditorClassIdentifier: 
+  cardName: Mosqueteira
+  cardImage: {fileID: 21300000, guid: 30dfbb1df422b934dbab92ba4bc79e41, type: 3}
+  cost: 350
+  troopPrefab: {fileID: 1951979224151128629, guid: c816b23c7ce2fae45871191b93b25b10, type: 3}
